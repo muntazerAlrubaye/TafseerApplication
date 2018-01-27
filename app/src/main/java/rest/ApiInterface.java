@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Aya;
 import models.Sura;
+import models.SuraFull;
 import models.Tafseer;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -22,4 +23,7 @@ public interface ApiInterface {
 
     @GET("tafseer/")
     Call<List<Tafseer>> getTafseerName();
+
+    @GET("surah_1.json")
+    Call<List<SuraFull>> getFullSura();
 }
