@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TafseerApplication</string>
+    <string name="app_name">المصحف المفسر</string>
+    <string name="sura_name">إسم السورة</string>
+    <string name="sura_number">رقم السورة</string>
 </resources>
