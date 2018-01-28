@@ -27,6 +27,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textView = findViewById(R.id.sura_tv);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,SuraFullActivity.class));
+//                finish();
+            }
+        });
+
         final RecyclerView recyclerView = findViewById(R.id.recycler_veiw_main);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -12,12 +12,12 @@ public class SuraFull {
     @SerializedName("name")
     private String sura_name;
     @SerializedName("verse")
-    private List<String> verse;
+    private List<SuraResponse> verse;
 
     public SuraFull() {
     }
 
-    public SuraFull(String sura_name, List<String> verse) {
+    public SuraFull(String sura_name, List<SuraResponse> verse) {
         this.sura_name = sura_name;
         this.verse = verse;
     }
@@ -30,11 +30,11 @@ public class SuraFull {
         this.sura_name = sura_name;
     }
 
-    public List<String> getVerse() {
+    public List<SuraResponse> getVerse() {
         return verse;
     }
 
-    public void setVerse(List<String> verse) {
+    public void setVerse(List<SuraResponse> verse) {
         this.verse = verse;
     }
 }

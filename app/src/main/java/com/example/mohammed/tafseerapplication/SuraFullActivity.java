@@ -10,6 +10,7 @@ import java.util.List;
 import models.Aya;
 import models.Sura;
 import models.SuraFull;
+import models.SuraResponse;
 import rest.ApiClient;
 import rest.ApiInterface;
 import retrofit2.Call;
@@ -31,7 +32,8 @@ public class SuraFullActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<SuraFull>>() {
             @Override
             public void onResponse(Call<List<SuraFull>> call, Response<List<SuraFull>> response) {
-                Toast.makeText(SuraFullActivity.this, "" + response.body().toString(), Toast.LENGTH_SHORT).show();
+//                List<SuraResponse> sura = response.body().get(1).getVerse();
+                Toast.makeText(SuraFullActivity.this, "" + response.body(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
