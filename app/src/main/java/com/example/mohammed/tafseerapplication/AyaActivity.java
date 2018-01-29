@@ -15,6 +15,7 @@ import retrofit2.Response;
 
 public class AyaActivity extends AppCompatActivity {
     TextView textView;
+    TextView galalen,tany;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +23,13 @@ public class AyaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_aya);
 
 
-        textView=findViewById(R.id.tafseer_txt);
+        galalen=findViewById(R.id.galalen);
+        tany=findViewById(R.id.tany);
+        textView = findViewById(R.id.tafseer_txt);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(AyaActivity.this,TafseerActivity.class));
+                startActivity(new Intent(AyaActivity.this, TafseerActivity.class));
                 finish();
             }
         });
@@ -37,6 +40,7 @@ public class AyaActivity extends AppCompatActivity {
         call.enqueue(new Callback<Aya>() {
             @Override
             public void onResponse(retrofit2.Call<Aya> call, Response<Aya> response) {
+                textView.setText(response.body().getAyaText());
 //                Toast.makeText(AyaActivity.this, "" + response.body().getSuraIndex(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(AyaActivity.this, "" + response.body().getSuraName(), Toast.LENGTH_SHORT).show();
                 Toast.makeText(AyaActivity.this, " الآيه رقم " + response.body().getAyahNumber(), Toast.LENGTH_SHORT).show();

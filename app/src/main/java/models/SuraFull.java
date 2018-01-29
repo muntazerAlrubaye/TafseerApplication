@@ -2,6 +2,8 @@ package models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 /**
@@ -12,14 +14,9 @@ public class SuraFull {
     @SerializedName("name")
     private String sura_name;
     @SerializedName("verse")
-    private List<SuraResponse> verse;
+    private JSONObject verse;
 
     public SuraFull() {
-    }
-
-    public SuraFull(String sura_name, List<SuraResponse> verse) {
-        this.sura_name = sura_name;
-        this.verse = verse;
     }
 
     public String getSura_name() {
@@ -30,11 +27,11 @@ public class SuraFull {
         this.sura_name = sura_name;
     }
 
-    public List<SuraResponse> getVerse() {
+    public JSONObject getVerse() {
         return verse;
     }
 
-    public void setVerse(List<SuraResponse> verse) {
+    public void setVerse(JSONObject verse) {
         this.verse = verse;
     }
 }

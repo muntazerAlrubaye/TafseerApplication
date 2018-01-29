@@ -1,5 +1,7 @@
 package rest;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import models.Aya;
@@ -25,5 +27,5 @@ public interface ApiInterface {
     Call<List<Tafseer>> getTafseerName();
 
     @GET("surah_1.json")
-    Call<List<SuraFull>> getFullSura();
+    Call<SuraFull> getFullSura();
 }
