@@ -51,7 +51,7 @@ public class SuraAdapter extends RecyclerView.Adapter<SuraAdapter.SuraViewHolder
     @Override
     public void onBindViewHolder(SuraViewHolder holder, int position) {
         holder.suraNameTV.setText(sura.get(position).getName());
-        holder.suraNumberTV.setText(sura.get(position).getIndex());
+        holder.suraNumberTV.setText((String.valueOf( sura.get(position).getIndex())));
     }
 
 

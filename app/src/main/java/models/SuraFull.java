@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SuraFull {
     @SerializedName("index")
-    private float suraIndex;
+    private String suraIndex;
     @SerializedName("name")
     private String sura_name;
     @SerializedName("verse")
@@ -25,11 +25,11 @@ public class SuraFull {
     public SuraFull() {
     }
 
-    public float getSuraIndex() {
+    public String getSuraIndex() {
         return suraIndex;
     }
 
-    public void setSuraIndex(float suraIndex) {
+    public void setSuraIndex(String suraIndex) {
         this.suraIndex = suraIndex;
     }
 

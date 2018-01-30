@@ -10,6 +10,7 @@ import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 
+import models.Sura;
 import models.SuraFull;
 import rest.ApiClientSura;
 import rest.ApiInterface;
@@ -23,7 +24,6 @@ import retrofit2.Response;
 
 public class SuraFullActivity extends AppCompatActivity {
 
-    SuraFull sura;
     TextView suraFullTV;
 
     @Override
@@ -32,14 +32,17 @@ public class SuraFullActivity extends AppCompatActivity {
         setContentView(R.layout.activity_full_sura);
 
         suraFullTV = findViewById(R.id.sura_full);
+        Bundle bundle = getIntent().getExtras();
+        String index = bundle.getString("index");
         final ApiInterface apiServices = ApiClientSura.getAllSura().create(ApiInterface.class);
-        Call<SuraFull> call = apiServices.getFullSura(sura.getSuraIndex());
+        Call<SuraFull> call = apiServices.getFullSura(index);
         call.enqueue(new Callback<SuraFull>() {
             @Override
             public void onResponse(Call<SuraFull> call, Response<SuraFull> response) {
+//                Toast.makeText(SuraFullActivity.this, ""+response.body().getVerse().get("verse_1"), Toast.LENGTH_SHORT).show();
                 String verses = "";
-                for (int i = 0; i < sura.getVerse_count(); i++) {
-                    verses += sura.getVerse().get("verse_" + i) + "*";
+                for (int i = 0; i <= response.body().getVerse_count(); i++) {
+                    verses += response.body().getVerse().get("verse_" + i) + "*";
                 }
                 suraFullTV.setText(verses);
             }
