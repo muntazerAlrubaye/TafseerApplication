@@ -29,4 +29,3 @@ public interface ApiInterface {
     @GET("surah_{sura_index}.json")
     Call<SuraFull> getFullSura(@Path("sura_index") String index);
 }
-//@Path("sura_index") String index
