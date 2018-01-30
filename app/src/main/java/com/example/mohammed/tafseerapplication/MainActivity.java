@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import adapter.RecyclerItemClickListener;
 import adapter.SuraAdapter;
 import models.Sura;
 import rest.ApiClient;
@@ -44,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final RecyclerView recyclerView = findViewById(R.id.recycler_veiw_main);
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MainActivity.this,SuraFullActivity.class);
+                intent.putExtra("index",String.valueOf(position+1));
+                startActivity(intent);
+
+            }
+        }));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);

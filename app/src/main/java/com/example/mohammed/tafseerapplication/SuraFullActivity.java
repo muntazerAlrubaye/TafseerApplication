@@ -6,16 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
+
 import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.List;
-
-import models.Aya;
-import models.Sura;
 import models.SuraFull;
-import models.SuraResponse;
-import rest.ApiClient;
 import rest.ApiClientSura;
 import rest.ApiInterface;
 import retrofit2.Call;
@@ -27,22 +22,26 @@ import retrofit2.Response;
  */
 
 public class SuraFullActivity extends AppCompatActivity {
+
+    SuraFull sura;
+    TextView suraFullTV;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_full_sura);
 
+        suraFullTV = findViewById(R.id.sura_full);
         final ApiInterface apiServices = ApiClientSura.getAllSura().create(ApiInterface.class);
-        Call<SuraFull> call = apiServices.getFullSura();
+        Call<SuraFull> call = apiServices.getFullSura(sura.getSuraIndex());
         call.enqueue(new Callback<SuraFull>() {
             @Override
             public void onResponse(Call<SuraFull> call, Response<SuraFull> response) {
-                TextView textView = findViewById(R.id.sura_full);
-
-//                textView.setText(response.body().getVerse().getString("verse_1").toString());
-                Toast.makeText(SuraFullActivity.this,"" , Toast.LENGTH_SHORT).show();//add response here
-
-
+                String verses = "";
+                for (int i = 0; i < sura.getVerse_count(); i++) {
+                    verses += sura.getVerse().get("verse_" + i) + "*";
+                }
+                suraFullTV.setText(verses);
             }
 
             @Override
@@ -51,4 +50,5 @@ public class SuraFullActivity extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -25,11 +25,13 @@ public class SuraAdapter extends RecyclerView.Adapter<SuraAdapter.SuraViewHolder
 
     public static class SuraViewHolder extends RecyclerView.ViewHolder {
         TextView suraNameTV;
+        TextView suraNumberTV;
 
         public SuraViewHolder(View itemView) {
             super(itemView);
 
             suraNameTV = itemView.findViewById(R.id.sura_name_tv);
+            suraNumberTV = itemView.findViewById(R.id.sura_number_tv);
 
         }
     }
@@ -44,11 +46,12 @@ public class SuraAdapter extends RecyclerView.Adapter<SuraAdapter.SuraViewHolder
     public SuraViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
         return new SuraViewHolder(view);
-        }
+    }
 
     @Override
     public void onBindViewHolder(SuraViewHolder holder, int position) {
         holder.suraNameTV.setText(sura.get(position).getName());
+        holder.suraNumberTV.setText(sura.get(position).getIndex());
     }
 
 

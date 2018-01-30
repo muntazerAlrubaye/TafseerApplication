@@ -1,7 +1,9 @@
 package models;
 
+import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -11,12 +13,24 @@ import java.util.List;
  */
 
 public class SuraFull {
+    @SerializedName("index")
+    private float suraIndex;
     @SerializedName("name")
     private String sura_name;
     @SerializedName("verse")
-    private JSONObject verse;
+    private JsonObject verse;
+    @SerializedName("count")
+    private int verse_count;
 
     public SuraFull() {
+    }
+
+    public float getSuraIndex() {
+        return suraIndex;
+    }
+
+    public void setSuraIndex(float suraIndex) {
+        this.suraIndex = suraIndex;
     }
 
     public String getSura_name() {
@@ -27,11 +41,19 @@ public class SuraFull {
         this.sura_name = sura_name;
     }
 
-    public JSONObject getVerse() {
+    public JsonObject getVerse() {
         return verse;
     }
 
-    public void setVerse(JSONObject verse) {
+    public void setVerse(JsonObject verse) {
         this.verse = verse;
+    }
+
+    public int getVerse_count() {
+        return verse_count;
+    }
+
+    public void setVerse_count(int verse_count) {
+        this.verse_count = verse_count;
     }
 }

@@ -26,6 +26,6 @@ public interface ApiInterface {
     @GET("tafseer/")
     Call<List<Tafseer>> getTafseerName();
 
-    @GET("surah_1.json")
-    Call<SuraFull> getFullSura();
+    @GET("surah_{sura_index}.json")
+    Call<SuraFull> getFullSura(@Path("sura_index") float index);
 }
